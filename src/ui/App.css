@@ -1,0 +1,21 @@
+.App {
+  text-align: center;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.App-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 10px;
+}
+
+.SettingsBtn {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}

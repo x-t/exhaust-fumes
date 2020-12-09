@@ -1,25 +1,21 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
-  "icons": [
-    {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
-    },
-    {
-      "src": "logo192.png",
-      "type": "image/png",
-      "sizes": "192x192"
-    },
-    {
-      "src": "logo512.png",
-      "type": "image/png",
-      "sizes": "512x512"
-    }
-  ],
-  "start_url": ".",
-  "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "manifest_version": 2,
+
+  "name": "exhaust-fumes",
+  "description": "exhaust fume bad for helf jermiah",
+  "version": "0.0.1",
+  "chrome_url_overrides": {
+    "newtab": "index.html"
+  },
+  "browser_action": {
+    "default_popup": "popup.html",
+    "default_icon": "favicon.ico"
+  },
+  "icons": {
+    "64": "favicon.ico"
+  },
+  "content_security_policy": "script-src 'self' 'sha256-j49t2THCt1jXa0oGU7iSflYeUMNvb91aDFEEdftBCWg='; object-src 'self'",
+  "permissions": [
+    "tabs", "storage"
+  ]
 }

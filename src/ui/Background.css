@@ -1,0 +1,22 @@
+:root {
+  --background-opacity: 40;
+  --background-color: #ffffff;
+}
+
+.BackgroundImage {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-attachment: fixed; 
+  background-size: cover;
+  background-position: center center;
+  opacity: calc(var(--background-opacity) / 100);
+  filter: alpha(opacity=var(--background-opacity));
+  z-index: -2;
+  display: none;
+}
