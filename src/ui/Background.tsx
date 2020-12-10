@@ -1,27 +1,31 @@
 import { useEffect } from 'react';
 import '../css/Background.css';
+import { Background } from '../hooks/useBackground';
 
-interface BgProps {
-  img: string;
-  opacity: number;
+interface BackgroundProps {
+  background: Background;
 }
 
-function BackgroundImage(props: BgProps) {
+const BackgroundImage = ({ background }: BackgroundProps) => {
   useEffect(() => {
     document.documentElement.style.setProperty(
-      "--background-opacity", props.opacity.toString()
+      "--background-opacity", background.values.opacity.toString()
     );
-  }, [props.opacity]);
+
+    document.documentElement.style.setProperty(
+      "--background-color", background.values.color
+    );
+  }, [background.values.color, background.values.opacity]);
 
   return (
     <div
       className="BackgroundImage"
       style={{ 
-        backgroundImage: `url('${props.img}')`,
+        backgroundImage: `url('${background.values.data}')`,
         display: 'initial'
       }}
     />
   );
-}
+};
 
 export default BackgroundImage;

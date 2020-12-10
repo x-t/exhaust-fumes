@@ -1,69 +1,36 @@
-import { useEffect, useState } from 'react';
-import { useCookies } from 'react-cookie';
+import { useState } from 'react';
 import '../css/App.css';
+import useBackground from '../hooks/useBackground';
 import BackgroundImage from './Background';
 import SettingsPanel from './SettingsPanel';
+import { ReactComponent as FAWrench } from '../svg/wrench.svg';
 
 function App() {
-  const [bgOpacity, setBgOpacity] = useState(40);
-  const [bgColor, setBgColor] = useState("#ffffff");
   const [openedSettings, setOpenSettings] = useState(false);
-  const [imageData, setImageData] = useState("");
-  const [cookies, setCookie] = useCookies(['bgOpacity', 'bgColor']);
-
-  useEffect(() => {
-    cookies.bgOpacity
-      ? setBgOpacity(cookies.bgOpacity)
-      : setCookie('bgOpacity', 40);
-
-    cookies.bgColor
-      ? setBgColor(cookies.bgColor)
-      : setCookie('bgColor', '#ffffff');
-
-    chrome.storage.local.get(['bgData'], (res) => {
-      res.bgData
-        ? setImageData(res.bgData)
-        : setImageData('img/default.jpg');
-    })
-
-    document.documentElement.style.setProperty(
-      "--background-color", cookies.bgColor
-    );
-  }, [cookies, setCookie]);
+  const background = useBackground();
 
   return (
     <>
     <BackgroundImage
-      img={imageData}
-      opacity={bgOpacity}
+      background={background}
     />
 
-    <div className="App"></div>
+    <div className="Gadgets"></div>
 
     { openedSettings && 
       <SettingsPanel
-        opacity={bgOpacity}
-        color={bgColor}
-        setBgOpacity={(opacity) => {
-          setBgOpacity(opacity);
-          setCookie('bgOpacity', opacity);
-        }}
-        setBgColor={(color) => {
-          setBgColor(color);
-          setCookie('bgColor', color);
-        }}
-        setImageData={(data) => {
-          setImageData(data);
-          chrome.storage.local.set({bgData: data});
-        }}
+        background={background}
       />
     }
 
-    <div className="SettingsBtn">
+    <div 
+      className="SettingsBtn"
+      style={{ width: '45px' }}
+    >
       <button onClick={() => {
         setOpenSettings(!openedSettings);
       }}>
-        Settings
+        <FAWrench />
       </button>
     </div>
     </>
