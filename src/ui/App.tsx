@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useCookies } from 'react-cookie';
-import './App.css';
+import '../css/App.css';
 import BackgroundImage from './Background';
 import SettingsPanel from './SettingsPanel';
 

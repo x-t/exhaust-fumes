@@ -2,7 +2,7 @@ import imageCompression from 'browser-image-compression';
 import { useState } from 'react';
 import { HexColorPicker } from 'react-colorful';
 import 'react-colorful/dist/index.css';
-import './SettingsPanel.css';
+import '../css/SettingsPanel.css';
 
 interface SettingsProps {
   opacity: number;

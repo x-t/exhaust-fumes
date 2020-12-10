@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import './Background.css';
+import '../css/Background.css';
 
 interface BgProps {
   img: string;
