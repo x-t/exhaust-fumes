@@ -28,7 +28,7 @@ Image without gadget
 
 They can be moved around! You can try writing one of your own (there is no public way to load them, so you have to modify the source code).
 
-They're defined in [useGadgets.ts](src/hooks/useGadgets.ts) and written in [src/gadgets](src/gadgets). [DummyGadget](src/gadget/DummyGadget.ts) and [CounterGadget](src/gadget/CounterGadget.ts) are pretty simple examples.
+They're defined in [useGadgets.ts](src/hooks/useGadgets.ts) and written in [src/gadgets](src/gadgets). [DummyGadget](src/gadget/DummyGadget.tsx) and [CounterGadget](src/gadget/CounterGadget.tsx) are pretty simple examples.
 
 ## Building
 
