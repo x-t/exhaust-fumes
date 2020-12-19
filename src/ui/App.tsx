@@ -26,6 +26,7 @@ const App = () => {
       <SettingsPanel
         background={background}
         gadgets={gadgets}
+        selfState={setOpenSettings}
       />
     }
 
@@ -34,7 +35,8 @@ const App = () => {
       style={{ width: '45px' }}
     >
       <button onClick={() => {
-        setOpenSettings(!openedSettings);
+        console.log(openedSettings);
+        setOpenSettings(current => !current);
       }}>
         <FAWrench />
       </button>

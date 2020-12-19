@@ -5,13 +5,15 @@ import { Background } from '../hooks/useBackground';
 import compressImage from '../lib/compressImage';
 import { Gadgets } from '../hooks/useGadgets';
 import React from 'react';
+import { ReactComponent as FATimes } from '../svg/times.svg';
 
 interface SettingsProps {
   background: Background;
   gadgets: Gadgets;
+  selfState: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const SettingsPanel = ({ background, gadgets }: SettingsProps) => {
+const SettingsPanel = ({ background, gadgets, selfState }: SettingsProps) => {
   const renderGadgetsNodes = () => {
     return Object.entries(gadgets).map(([key, value]) => {
       const [state, setState] = value.state;
@@ -21,9 +23,17 @@ const SettingsPanel = ({ background, gadgets }: SettingsProps) => {
                 key: `${key}-SettingsNode`} as React.Attributes, null);
     })
   }
-  
+
   return (
     <div className="SettingsPanel">
+    <div className="SettingsPanelBar">
+      <p className="PanelName">Settings Panel</p>
+      <button
+        className="CloseButton"
+        onClick={() => selfState(current => !current)}
+      ><FATimes /></button>
+    </div>
+    <div className="SettingsPanelContent">
       <div className="SettingsNode">
         <p>Image Opacity</p>
         <input
@@ -64,6 +74,15 @@ const SettingsPanel = ({ background, gadgets }: SettingsProps) => {
 
       {renderGadgetsNodes()}
 
+      <div className="SettingsCopyright">
+        <p><strong>Copyright</strong></p>
+        <div>Icons for Weather Gadget made by <a href="https://www.flaticon.com/authors/iconixar" title="iconixar">iconixar</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+        <div>Weather Gadget uses the OpenWeatherMap API.</div>
+        <div>Other icons (Wrench, Times) made by <a href="https://fontawesome.com/">FontAwesome</a></div>
+        <div>Built with React and third-party modules. <a href="https://github.com/x-t/exhaust-fumes">Source code</a></div>
+      </div>
+
+    </div>
     </div>
 
   );

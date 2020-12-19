@@ -2,13 +2,33 @@
 
 Codename: Exhaust fumes
 
-This extension is simple:
+A pretty minimalistic new tab extension. Allows you to set the background (opacity + color + image) and use gadgets.
 
-- Displays an image in the new tab
-- You can choose the opacity and background color
-- For now, that's it really.
+Still kinda looks crufty, but it works.
 
-It's also pretty horribly styled at the moment, but that is subject to change.
+## Screenshots
+
+Image with gadget
+
+![Image with gadget](https://i.arxius.io/57bf732a.png)
+
+Color with gadget
+
+![Color with gadget](https://i.arxius.io/d150355a.png)
+
+Settings panel
+
+![Settings panel](https://i.arxius.io/acf4a306.png)
+
+Image without gadget
+
+![Image without gadget](https://i.arxius.io/acb3de3f.png)
+
+## Gadgets
+
+They can be moved around! You can try writing one of your own (there is no public way to load them, so you have to modify the source code).
+
+They're defined in [useGadgets.ts](src/hooks/useGadgets.ts) and written in [src/gadgets](src/gadgets). [DummyGadget](src/gadget/DummyGadget.ts) and [CounterGadget](src/gadget/CounterGadget.ts) are pretty simple examples.
 
 ## Building
 

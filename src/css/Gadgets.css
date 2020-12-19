@@ -22,6 +22,28 @@
 .WeatherGadget {
   width: 150px;
   height: 80px;
-  background-color: white;
-  color: black;
+  background-color: transparent;
+  color: var(--background-color);
+  fill: currentColor;
+  filter: invert(1) grayscale(1);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.WeatherGadget .WeatherIcon {
+  color: var(--background-color);
+}
+
+.WeatherIcon svg {
+  width: 75px;
+  height: 75px;
+}
+
+.WeatherData h1 {
+  margin-bottom: 0;
+}
+
+.WeatherData p {
+  margin-top: 0;
 }

@@ -6,10 +6,59 @@
   transform: translate(-50%, -50%);
   width: 500px;
   height: 500px;
-  background-color: white;
+  background-color: rgb(248, 248, 248);
   color: black;
-  padding: 20px;
+}
+
+.SettingsPanelBar {
+  height: 25px;
+  width: 100%;
+  position: fixed;
+  padding: 0;
+  background-color: rgb(213, 226, 238);
+  display: flex;
+}
+
+.SettingsPanelBar p {
+  padding: 0;
+  margin: 0;
+  margin-top: 5px;
+}
+
+.SettingsPanelBar .PanelName {
+  margin-left: 15px;
+}
+
+.SettingsPanelBar .CloseButton {
+  margin-left: auto;
+  /* margin-right: 10px; */
+  cursor: pointer;
+  outline: none;
+  border: none;
+  background-color: transparent;
+}
+
+.SettingsPanelBar .CloseButton svg {
+  height: 20px;
+  width: 25px;
+  margin-top: 2px;
+}
+
+.SettingsPanelContent {
+  position: relative;
   overflow-y: scroll;
+  margin-top: 25px;
+  padding-left: 20px;
+  padding-right: 20px;
+  height: 475px;
+}
+
+.SettingsPanelContent:first-child {
+  padding-top: 20px;
+}
+
+.SettingsPanelContent .SettingsCopyright {
+  padding-bottom: 20px;
 }
 
 .SettingsNode {
