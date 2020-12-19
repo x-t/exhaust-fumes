@@ -14,7 +14,7 @@
   "icons": {
     "64": "favicon.ico"
   },
-  "content_security_policy": "script-src 'self' 'sha256-j49t2THCt1jXa0oGU7iSflYeUMNvb91aDFEEdftBCWg='; object-src 'self'",
+  "content_security_policy": "script-src 'self' 'sha256-rlXVQ0+Mzcd1i9XCm7igfw0mJmu1bwHFXcM0hI7chRg='; object-src 'self'",
   "permissions": [
     "tabs", "storage"
   ]
