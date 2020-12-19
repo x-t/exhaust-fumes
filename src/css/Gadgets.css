@@ -1,0 +1,27 @@
+.Gadgets {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+.DummyGadget {
+  width: 100px;
+  height: 100px;
+  background-color: white;
+  color: black;
+  overflow-y: scroll;
+}
+
+.StickyGadget {
+  width: 100px;
+  height: 100px;
+  background-color: white;
+  color: black;
+}
+
+.WeatherGadget {
+  width: 150px;
+  height: 80px;
+  background-color: white;
+  color: black;
+}

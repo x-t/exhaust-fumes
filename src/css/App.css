@@ -15,4 +15,5 @@
   color: var(--background-color);
   fill: currentColor;
   filter: invert(1) grayscale(1);
+  cursor: pointer;
 }

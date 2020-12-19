@@ -8,7 +8,7 @@ https://www.joshwcomeau.com/react/persisting-react-state-in-localstorage/ */
  * @param defaultValue Default value for the value
  * @param key Key used to get/set inside localStorage
  */
-const useStickyState = <T extends unknown>(defaultValue: T, key: string): [T, React.Dispatch<SetStateAction<T>>] => {
+const useStickyState = <T,>(defaultValue: T, key: string): [T, React.Dispatch<SetStateAction<T>>] => {
   const [value, setValue] = useState(() => {
     const stickyValue = localStorage.getItem(key);
     return stickyValue !== null

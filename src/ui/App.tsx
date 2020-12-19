@@ -4,10 +4,13 @@ import useBackground from '../hooks/useBackground';
 import BackgroundImage from './Background';
 import SettingsPanel from './SettingsPanel';
 import { ReactComponent as FAWrench } from '../svg/wrench.svg';
+import Gadgets from './Gadgets';
+import useGadgets from '../hooks/useGadgets';
 
-function App() {
+const App = () => {
   const [openedSettings, setOpenSettings] = useState(false);
   const background = useBackground();
+  const gadgets = useGadgets();
 
   return (
     <>
@@ -15,11 +18,14 @@ function App() {
       background={background}
     />
 
-    <div className="Gadgets"></div>
+    <Gadgets
+      gadgets={gadgets}
+    />
 
     { openedSettings && 
       <SettingsPanel
         background={background}
+        gadgets={gadgets}
       />
     }
 

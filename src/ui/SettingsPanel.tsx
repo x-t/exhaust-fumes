@@ -1,18 +1,27 @@
-import { useState } from 'react';
 import { HexColorPicker } from 'react-colorful';
 import 'react-colorful/dist/index.css';
 import '../css/SettingsPanel.css';
 import { Background } from '../hooks/useBackground';
 import compressImage from '../lib/compressImage';
+import { Gadgets } from '../hooks/useGadgets';
+import React from 'react';
 
 interface SettingsProps {
   background: Background;
+  gadgets: Gadgets;
 }
 
-function SettingsPanel(props: SettingsProps) {
-  let [opacitySliderState, setOpacitySliderState] = useState(props.background.values.opacity);
-  let [colorPickerState, setColorPickerState] = useState(props.background.values.color);
-
+const SettingsPanel = ({ background, gadgets }: SettingsProps) => {
+  const renderGadgetsNodes = () => {
+    return Object.entries(gadgets).map(([key, value]) => {
+      const [state, setState] = value.state;
+        return React.createElement(value.settingsNode as React.FunctionComponent,
+              { settings: state,
+                setSettings: setState,
+                key: `${key}-SettingsNode`} as React.Attributes, null);
+    })
+  }
+  
   return (
     <div className="SettingsPanel">
       <div className="SettingsNode">
@@ -24,10 +33,9 @@ function SettingsPanel(props: SettingsProps) {
           min={0}
           max={100}
           step={1}
-          value={opacitySliderState}
+          value={background.values.opacity}
           onChange={(e) => {
-            setOpacitySliderState(parseInt(e.target.value));
-            props.background.set.opacity(parseInt(e.target.value));
+            background.set.opacity(parseInt(e.target.value));
           }}
         />
       </div>
@@ -35,10 +43,9 @@ function SettingsPanel(props: SettingsProps) {
       <div className="SettingsNode">
         <p>Background Color</p>
         <HexColorPicker 
-          color={colorPickerState}
+          color={background.values.color}
           onChange={(color) => {
-            setColorPickerState(color);
-            props.background.set.color(color);
+            background.set.color(color);
           }}
         />
       </div>
@@ -50,11 +57,15 @@ function SettingsPanel(props: SettingsProps) {
           accept="image/*"
           onChange={async (e) => {
             const imageString = await compressImage(e);
-            props.background.set.data(imageString!)
+            background.set.data(imageString!)
           }}
         />
       </div>
+
+      {renderGadgetsNodes()}
+
     </div>
+
   );
 }
 
