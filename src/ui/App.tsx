@@ -1,48 +1,52 @@
-import { useState } from 'react';
-import '../css/App.css';
-import useBackground from '../hooks/useBackground';
-import BackgroundImage from './Background';
-import SettingsPanel from './SettingsPanel';
-import { ReactComponent as FAWrench } from '../svg/wrench.svg';
-import Gadgets from './Gadgets';
-import useGadgets from '../hooks/useGadgets';
+import { useState } from "react";
+import "../css/App.css";
+import useBackground from "../hooks/useBackground";
+import BackgroundImage from "./Background";
+import SettingsPanel from "./SettingsPanel";
+import { ReactComponent as FAWrench } from "../svg/wrench.svg";
+import Gadgets from "./Gadgets";
+import useGadgets from "../hooks/useGadgets";
+import { useGadgetBackgroundOverride } from "../hooks/useGadgetBackgroundOverride";
+import { BackgroundContext } from "./BackgroundContext";
 
 const App = () => {
   const [openedSettings, setOpenSettings] = useState(false);
   const background = useBackground();
   const gadgets = useGadgets();
+  const [isOverride, setOverride] = useGadgetBackgroundOverride();
 
   return (
     <>
-    <BackgroundImage
-      background={background}
-    />
+      <BackgroundContext.Provider
+        value={{
+          isOverriden: isOverride.is,
+          setOverride: setOverride,
+          overridenBy: isOverride.by,
+        }}
+      >
+        <BackgroundImage background={background} />
+        <Gadgets gadgets={gadgets} />
 
-    <Gadgets
-      gadgets={gadgets}
-    />
+        {openedSettings && (
+          <SettingsPanel
+            background={background}
+            gadgets={gadgets}
+            selfState={setOpenSettings}
+          />
+        )}
+      </BackgroundContext.Provider>
 
-    { openedSettings && 
-      <SettingsPanel
-        background={background}
-        gadgets={gadgets}
-        selfState={setOpenSettings}
-      />
-    }
-
-    <div 
-      className="SettingsBtn"
-      style={{ width: '45px' }}
-    >
-      <button onClick={() => {
-        console.log(openedSettings);
-        setOpenSettings(current => !current);
-      }}>
-        <FAWrench />
-      </button>
-    </div>
+      <div className="SettingsBtn" style={{ width: "45px" }}>
+        <button
+          onClick={() => {
+            setOpenSettings((current) => !current);
+          }}
+        >
+          <FAWrench />
+        </button>
+      </div>
     </>
   );
-}
+};
 
 export default App;
