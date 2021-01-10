@@ -3,7 +3,7 @@
 
   "name": "exhaust-fumes",
   "description": "exhaust fume bad for helf jermiah",
-  "version": "0.0.1",
+  "version": "1.1.0",
   "chrome_url_overrides": {
     "newtab": "index.html"
   },
