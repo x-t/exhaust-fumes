@@ -13,7 +13,7 @@ export const AfterDarkGadgetDefaults: AfterDarkGadgetSettings = {
   background: "flying-toasters",
 };
 
-const makeBackgroundIframe = (background: string) => {
+const BackgroundIframe = ({background}: {background: string}) => {
   return (
     <iframe
       src={`./after-dark-css/all/${background}.html`}
@@ -42,7 +42,7 @@ const afterDarkBackground = [
 
 const makeHumanName = (name: string) =>
   name === "messages2"
-    ? "Messages 2"
+    ? "Messages 2" /* Edge case, because "Messages2" isn't correct */
     : name
         .split("-")
         .map((word) => word[0].toUpperCase() + word.substr(1))
@@ -54,7 +54,10 @@ const AfterDarkGadget = (props: GadgetProps<AfterDarkGadgetSettings>) => {
       className="BackgroundImage AfterDarkGadget"
       style={{ display: "initial" }}
     >
-      {makeBackgroundIframe(props.settings.background)}
+      <BackgroundIframe 
+        background={props.settings.background}
+      />
+
     </div>
   );
 };
@@ -91,7 +94,7 @@ export const AfterDarkGadgetSettingsNode = (
                         is
                           ? by === "AfterDarkGadget"
                             ? { is: false, by: "" }
-                            : { is, by }
+                            : { is, by } /* Background is overriden not by us */
                           : { is: true, by: "AfterDarkGadget" }
                       );
                     }}
